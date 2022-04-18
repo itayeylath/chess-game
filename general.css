@@ -1,52 +1,51 @@
-.container {
-    height: 250px;
-    width: 250px;
+
+img {
+    height: 40px;
+    width: 40px;
+    margin: auto;
+}
+
+tr td {
+    height: 50px;
+    width: 50px;
+}
+
+/* table tr:nth-child(even) td:nth-child(odd) {
+    background-color: darkgrey;
+}
+
+table tr:nth-child(odd) td:nth-child(even) {
+    background-color: darkgrey;
+}
+
+table tr:nth-child(even) td:nth-child(even) {
+    background-color: white;
+}
+
+table tr:nth-child(odd) td:nth-child(odd) {
+    background-color: white;
+}  */
+
+table {
+    border-spacing: 0;
     border-style: solid;
     border-color: #000000;
-    margin: auto;
-
-}
-
-.onclick
+    margin: auto
+  }
+  
+  .light-cell {
+    background: rgb(211, 210, 210);
+    width: 45px;
+    height: 45px;
+  }
+  
+  .dark-cell {
+    background: rgb(63, 63, 63);
+    width: 45px;
+    height: 45px;
+  }
+  
+  .selected
 {
-   opacity: 40%;
-}
-
-.offclick
-{
-   background-color: aqua;
-}
-
-
-.container img {
-    height: 25px;
-    width: 25px;
-    margin: auto;
-}
-
-.container table {
-    height: 100%;
-    width: 100%;
-    border-spacing: 0;
-}
-
-.container tr td {
-    height: 10%;
-    width: 10%;
-}
-
-.container table tr:nth-child(even) td:nth-child(odd) {
-    background-color: darkgrey;
-}
-
-.container table tr:nth-child(odd) td:nth-child(even) {
-    background-color: darkgrey;
-}
-
-.container table tr:nth-child(even) td:nth-child(even) {
-    background-color: white;
-}
-
-.container table tr:nth-child(odd) td:nth-child(odd) {
-    background-color: white;
+ background: blueviolet;
 }
