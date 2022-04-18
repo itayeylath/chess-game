@@ -6,6 +6,18 @@
     margin: auto;
 
 }
+
+.onclick
+{
+   opacity: 40%;
+}
+
+.offclick
+{
+   background-color: aqua;
+}
+
+
 .container img {
     height: 25px;
     width: 25px;
