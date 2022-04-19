@@ -10,12 +10,12 @@ const KING = 'king';
 const QUEEN = 'queen';
 
 let selectedCell;
-let pieces = [];
+// let pieces = [];
 let boardData;
 let table;
 
 class Piece {
-    constructor(row, col, type, player) {
+  constructor(row, col, type, player) {
     this.row = row;
     this.col = col;
     this.type = type;
@@ -57,19 +57,19 @@ class Piece {
   }
 
   getPawnRelativeMoves() {
-    if (this.player==WHITE_PLAYER ){
-      if(this.row==1){
+    if (this.player == WHITE_PLAYER) {
+      if (this.row == 1) {
         return [[2, 0], [1, 0]];
       }
-      else{
-      return [[1, 0]];
+      else {
+        return [[1, 0]];
       }
     }
-    else if (this.row==1){
+    else if (this.row == 1) {
       return [[-2, 0], [-1, 0]];
     }
-    else{
-    return [[-1, 0]];
+    else {
+      return [[-1, 0]];
     }
   }
 
@@ -85,24 +85,24 @@ class Piece {
   }
 
   getKnightRelativeMoves() {
-      return [[2, 1],[2, -1],[-2, 1],[-2, -1]];
+    return [[2, 1], [2, -1], [-2, 1], [-2, -1]];
   }
-  
+
   getBishopRelativeMoves() {
     let result = [];
-      for (let i = 1; i < BOARD_SIZE; i++) {
-        result.push([i, i]);
-        result.push([i, -i]);
-        result.push([-i, -i]);
-        result.push([-i, i]);
-      }
-     return result; 
+    for (let i = 1; i < BOARD_SIZE; i++) {
+      result.push([i, i]);
+      result.push([i, -i]);
+      result.push([-i, -i]);
+      result.push([-i, i]);
+    }
+    return result;
   }
 
   getKingRelativeMoves() {
     let result = [];
-    result.push ([1, 0], [1, -1], [1, 1], [0, -1], [0, 1], [-1, 0], [-1, 1], [-1, -1]);
-      return result;
+    result.push([1, 0], [1, -1], [1, 1], [0, -1], [0, 1], [-1, 0], [-1, 1], [-1, -1]);
+    return result;
   }
 
   getQueenRelativeMoves() {
@@ -119,11 +119,11 @@ class Piece {
       result.push([0, i]);
       result.push([0, -i]);
     }
-   return result; 
+    return result;
   }
 }
 
-  
+
 class BoardData {
   constructor(pieces) {
     this.pieces = pieces;
@@ -131,7 +131,12 @@ class BoardData {
 
   // Returns piece in row, col, or undefined if not exists.
   getPiece(row, col) {
-   
+    for (const piece of this.pieces){
+      if (piece.row === row && piece.col === col){
+        return piece;
+      }
+    }
+
   }
 }
 // class Piece {
@@ -171,36 +176,36 @@ class BoardData {
 //     }
 //   }
 // }
-  
-  function getInitialpieces() {
-    let result = [];
-    addFirstRowPieces(result, 0, WHITE_PLAYER);
-    addFirstRowPieces(result, 7, BLACK_PLAYER);
 
-    for (let i = 0; i < BOARD_SIZE; i++) {
-      result.push(new Piece(1, i, PAWN, WHITE_PLAYER));
-      result.push(new Piece(6, i, PAWN, BLACK_PLAYER));
-    }
+function getInitialpieces() {
+  let result = [];
+  addFirstRowPieces(result, 0, WHITE_PLAYER);
+  addFirstRowPieces(result, 7, BLACK_PLAYER);
 
-    return result;
+  for (let i = 0; i < BOARD_SIZE; i++) {
+    result.push(new Piece(1, i, PAWN, WHITE_PLAYER));
+    result.push(new Piece(6, i, PAWN, BLACK_PLAYER));
   }
 
-  function addFirstRowPieces(result, row, player) {
-    result.push(new Piece(row, 0, ROOK, player));
-    result.push(new Piece(row, 1, KNIGHT, player));
-    result.push(new Piece(row, 2, BISHOP, player));
-    result.push(new Piece(row, 3, KING, player));
-    result.push(new Piece(row, 4, QUEEN, player));
-    result.push(new Piece(row, 5, BISHOP, player));
-    result.push(new Piece(row, 6, KNIGHT, player));
-    result.push(new Piece(row, 7, ROOK, player));
-  }
+  return result;
+}
+
+function addFirstRowPieces(result, row, player) {
+  result.push(new Piece(row, 0, ROOK, player));
+  result.push(new Piece(row, 1, KNIGHT, player));
+  result.push(new Piece(row, 2, BISHOP, player));
+  result.push(new Piece(row, 3, KING, player));
+  result.push(new Piece(row, 4, QUEEN, player));
+  result.push(new Piece(row, 5, BISHOP, player));
+  result.push(new Piece(row, 6, KNIGHT, player));
+  result.push(new Piece(row, 7, ROOK, player));
+}
 
 function addImg(cell, player, name) {
-    const img = document.createElement("img")
-    img.src = 'img/' + player + '/' + name + '.png';
-    // img.addEventListener("click", () => img.classList.toggle("onclick"));
-    cell.appendChild(img);
+  const img = document.createElement("img")
+  img.src = 'img/' + player + '/' + name + '.png';
+  // img.addEventListener("click", () => img.classList.toggle("onclick"));
+  cell.appendChild(img);
 }
 
 function onCellClick(event, row, col) {
@@ -212,27 +217,27 @@ function onCellClick(event, row, col) {
       table.rows[i].cells[j].classList.remove('possible-move');
     }
   }
-  // const piece = boardData.getPiece(row, col);
-  // if (piece !== undefined) {
-  //   let possibleMoves = piece.getPossibleMoves();
-  //   for (let possibleMove of possibleMoves) {
-  //     const cell = table.rows[possibleMove[0]].cells[possibleMove[1]];
-  //     cell.classList.add('possible-move');
+  const piece = boardData.getPiece(row, col);
+  if (piece !== undefined) {
+    let possibleMoves = piece.getPossibleMoves();
+    for (let possibleMove of possibleMoves) {
+      const cell = table.rows[possibleMove[0]].cells[possibleMove[1]];
+      cell.classList.add('possible-move');
+    }
+  }
+  // // Show possible moves
+  
+  // for (let piece of boardData.pieces) {
+  //   if (piece.row === row && piece.col === col) {
+  //     // console.log(piece);
+  //     let possibleMoves = piece.getPossibleMoves();
+  //     for (let possibleMove of possibleMoves) {
+  //       const cell = table.rows[possibleMove[0]].cells[possibleMove[1]];
+  //       cell.classList.add('possible-move');
+  //     }
   //   }
   // }
 
-  // // Show possible moves
-  for (let piece of pieces) {
-    if (piece.row === row && piece.col === col) {
-      // console.log(piece);
-      let possibleMoves = piece.getPossibleMoves();
-      for (let possibleMove of possibleMoves) {
-        const cell = table.rows[possibleMove[0]].cells[possibleMove[1]];
-        cell.classList.add('possible-move');
-      }
-    }
-  }
-  
   // Clear previously selected cell
   if (selectedCell !== undefined) {
     selectedCell.classList.remove('selected');
@@ -245,47 +250,48 @@ function onCellClick(event, row, col) {
 
 
 function creatCessBoard() {
-    table = document.createElement('table');
-    document.body.appendChild(table);
-    
-    for (let row = 0; row < BOARD_SIZE; row++) {
-      const rowElemnt = table.insertRow();
-      for (let col = 0; col < BOARD_SIZE; col++) {
-        const cell = rowElemnt.insertCell();
-        cell.id = "cell-" + row.toString() + "_" + col.toString();
-        if ((row + col) % 2 === 0) {
-          cell.className = 'light-cell';
-        } else {
-          cell.className = 'dark-cell';
-        }
-        cell.addEventListener('click', (event) => onCellClick(event, row, col));
+  table = document.createElement('table');
+  document.body.appendChild(table);
+
+  for (let row = 0; row < BOARD_SIZE; row++) {
+    const rowElemnt = table.insertRow();
+    for (let col = 0; col < BOARD_SIZE; col++) {
+      const cell = rowElemnt.insertCell();
+      cell.id = "cell-" + row.toString() + "_" + col.toString();
+      if ((row + col) % 2 === 0) {
+        cell.className = 'light-cell';
+      } else {
+        cell.className = 'dark-cell';
       }
+      cell.addEventListener('click', (event) => onCellClick(event, row, col));
     }
+  }
 
-    // const newdiv = document.createElement('div');
-    // newdiv.classList.add('container');
-    // document.body.appendChild(newdiv);
-    // const table = document.createElement('table');
-    // newdiv.appendChild(table);
+  // const newdiv = document.createElement('div');
+  // newdiv.classList.add('container');
+  // document.body.appendChild(newdiv);
+  // const table = document.createElement('table');
+  // newdiv.appendChild(table);
 
-    // // let i = 0;
-    // // while (i < 8) {
-    // //     const row = table.insertRow(i)
-    // //     let j = 0;
-    // //     while (j < 8) {
-    // //         const cell = row.insertCell(j)
-    // //         cell.addEventListener('click', onCellClick);
+  // // let i = 0;
+  // // while (i < 8) {
+  // //     const row = table.insertRow(i)
+  // //     let j = 0;
+  // //     while (j < 8) {
+  // //         const cell = row.insertCell(j)
+  // //         cell.addEventListener('click', onCellClick);
 
-    // //         j++
-    // //     }
-    // //     i++
-    // // }
+  // //         j++
+  // //     }
+  // //     i++
+  // // }
 
-    pieces = getInitialpieces();
+  boardData = new BoardData(getInitialpieces());
+  //pieces = getInitialpieces();
 
-    for (let piece of pieces) {
-      addImg(table.rows[piece.row].cells[piece.col], piece.player, piece.type);
-    }
+  for (let piece of boardData.pieces) {
+    addImg(table.rows[piece.row].cells[piece.col], piece.player, piece.type);
+  }
 }
 
 window.addEventListener('load', creatCessBoard);
