@@ -1,4 +1,4 @@
-//test if commit work
+//seconde test if commit work
 const BOARD_SIZE = 8;
 const WHITE_PLAYER = 'white';
 const BLACK_PLAYER = 'black';
