@@ -1,3 +1,4 @@
+//test if commit work
 const BOARD_SIZE = 8;
 const WHITE_PLAYER = 'white';
 const BLACK_PLAYER = 'black';
@@ -131,8 +132,8 @@ class BoardData {
 
   // Returns piece in row, col, or undefined if not exists.
   getPiece(row, col) {
-    for (const piece of this.pieces){
-      if (piece.row === row && piece.col === col){
+    for (const piece of this.pieces) {
+      if (piece.row === row && piece.col === col) {
         return piece;
       }
     }
@@ -226,7 +227,7 @@ function onCellClick(event, row, col) {
     }
   }
   // // Show possible moves
-  
+
   // for (let piece of boardData.pieces) {
   //   if (piece.row === row && piece.col === col) {
   //     // console.log(piece);
