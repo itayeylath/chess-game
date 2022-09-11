@@ -11,7 +11,9 @@ tight schedules, aiming to maximize knowledge and production.
 <img src="https://avatars.githubusercontent.com/u/105980203?s=200&v=4" width="100" hight="150">
 
 ## About my first project
-After learning the basics (HTML, CSS and JS), we started the bootcamp project together led by the  lecturer, we received a task and then solved it together, this is how we built the game step by step.
+After learning the basics (HTML, CSS and JS), we started the bootcamp project together led by the  lecturer, we received a task, try it alone and then solved it together, this is how we built the game step by step.
+
+<b>That was the moment I realized I enjoyed programming.</b>
 
 <img src="img/chess-game-pic.png" width="300" hight="300">
 
