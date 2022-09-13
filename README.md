@@ -9,10 +9,15 @@ tight schedules, aiming to maximize knowledge and production.
 
 https://suvelocity.org/
 
-<img src="https://avatars.githubusercontent.com/u/67334329?s=200&v=4" width="100" hight="150">
-<img src="https://avatars.githubusercontent.com/u/105980203?s=200&v=4" width="100" hight="150">
+<img src="img/cyber4s.jpeg" width="300" hight="150">
+
+<img src="img/all-class-2.jpeg" width="300" hight="150">
 
 ## About my first project
+
+### [➡️ Open the app ⬅️](https://chess-game-vanilla.netlify.app)
+
+
 After learning the basics (HTML, CSS and JS), we started the bootcamp project together led by the  lecturer, we received a task, try it alone and then solved it together, this is how we built the game step by step.
 
 <b>That was the moment I realized I enjoyed programming.</b>
